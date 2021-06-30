@@ -1,0 +1,15 @@
+snippet srp
+	 #!/bin/bash                                                                                    
+
+	 # callme: $${0:0} vr01|cr01|mx01|mf01|mlt01                                                
+
+	 # assumptions:                                                                                 
+	 # - The SRP is being done before the code release                                              
+	 # - CWD is root directory of this repo                                                         
+	 # - vr01, cr01, etc are service definitions to connect to clientdb master as user pgadmin      
+
+	 ../bom-postgres/bin/dbmigration.pl --service="$1"                                              
+
+	 psql -X -v ON_ERROR_STOP=on service="$1" <<'SQL'                                               
+	 \i config/sql/functions/088_delete_copiers.sql                                                 
+	 SQL                                                                                            

@@ -1,0 +1,43 @@
+snippet sql
+	$result =$dbic->run (
+		fixup=> sub {
+			$_->selectrow_hashref("${1}",
+				undef,
+				${2},
+				${0},
+		)};
+		);
+snippet dd
+	use Data::Dumper::Concise;
+	warn Dumper(${0});
+
+snippet cw
+	local $SIG{__WARN__} = sub {
+	   use Devel::StackTrace;
+	   my $trace = Devel::StackTrace->new;
+	   print $trace->as_string
+	};
+snippet msub
+	=head2 ${1:Sub_name}
+
+	Description: ${2:Description}
+	Takes the following arguments as named parameters
+
+	=over 4
+
+	=item - ${3:attr 1}
+	
+	=item - ${4:attr 2}
+
+	=back
+
+	Returns a
+
+	=cut
+
+	sub $1 {
+		my($self, %attrs) = @_;
+		for (qw ( $3 $4  )){ die " argument  $_  is required if !defined($attrs{$_}) } ;
+	
+	}
+   
