@@ -79,7 +79,7 @@ export GEM_HOME="$HOME/gems"
 export PATH="$HOME/gems/bin:$PATH"
 
 if grep -q docker /proc/1/cgroup; then 
-   export PATH="~/docker_tools:$PATH" 
+   export PATH="~/docker_tools:~/docker_tools/nvim/usr/bin:$PATH" 
 else
     eval `ssh-agent`
     ssh-add ~/.ssh/qa_rsa
