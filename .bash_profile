@@ -73,10 +73,16 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-eval `ssh-agent`
-ssh-add ~/.ssh/qa_rsa
 export PATH=$PATH:~/utils:/opt/app_images
 # Install Ruby Gems to ~/gems
 export GEM_HOME="$HOME/gems"
 export PATH="$HOME/gems/bin:$PATH"
+
+if grep -q docker /proc/1/cgroup; then 
+   export PATH="~/docker_tools:$PATH" 
+else
+    eval `ssh-agent`
+    ssh-add ~/.ssh/qa_rsa
+fi
+
 eval "$(starship init bash)"
