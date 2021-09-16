@@ -1,0 +1,1 @@
+/home/git/regentmarkets/environment-manifests-qa/personalize.d/bash_profile
