@@ -1,0 +1,4 @@
+[hostname]
+format = "[$hostname](bold red) "
+[username]
+format = "[$user](bold yellow):"
