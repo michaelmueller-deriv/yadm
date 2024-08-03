@@ -4,11 +4,10 @@ try
 	"Plug 'roxma/nvim-completion-manager'
 	Plug 'SirVer/ultisnips'
 	Plug 'honza/vim-snippets'
-	Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
-	Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
-	Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 	Plug 'ap/vim-buftabline'
 	Plug 'majutsushi/tagbar'
+        Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+        Plug 'junegunn/fzf.vim' 
 	Plug 'hoob3rt/lualine.nvim'
 	Plug 'ryanoasis/vim-devicons'
 	Plug 'tpope/vim-fugitive'
