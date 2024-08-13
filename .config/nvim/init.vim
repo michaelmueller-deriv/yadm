@@ -1,6 +1,7 @@
 try
 	call plug#begin()
 	Plug 'ncm2/ncm2'
+        Plug 'ellisonleao/gruvbox.nvim'
         Plug 'roxma/nvim-yarp'
 	Plug 'honza/vim-snippets'
 	Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
@@ -23,7 +24,12 @@ try
 	call plug#end()
 
 
-        let g:python3_host_prog='C:\Users\MikeMueller\scoop\apps\python\current\python.exe'
+        :if has('win32')
+            let g:python3_host_prog='C:\Users\MikeMueller\scoop\apps\python\current\python.exe'
+        :else 
+            let g:python3_host_prog='/usr/bin/python3'
+        :endif
+
         let mapleader = ","
 	nnoremap <F4> :CHADopen<CR> 
 	nnoremap <F7> :TagbarToggle<CR>
@@ -122,7 +128,10 @@ augroup END
         -- NOTE: this plugin is designed with this icon in mind,
         -- and so changing this is NOT recommended, this is intended
         -- as an escape hatch for people who cannot bear it for whatever reason
-        indicator_icon = '▎',
+        --'indicator_icon' will be deprecated: It should be changed to indicator and icon specified as indicator.icon, with
+indicator.style = 'icon' 
+        indicator = '▎',
+        indicator.icon = 'icon',
         buffer_close_icon = '',
         modified_icon = '●',
         close_icon = '',
@@ -189,13 +198,13 @@ set hidden
 set nu
 syn on
 :set mouse=a
-colorscheme desert
-colorscheme code4pay
+colorscheme gruvbox
+"colorscheme code4pay
 "Transparent background
- highlight Normal guibg=none
-highlight NonText guibg=none
-highlight Normal ctermbg=none
-highlight NonText ctermbg=none
+"highlight Normal guibg=none
+"highlight NonText guibg=none
+"highlight Normal ctermbg=none
+"highlight NonText ctermbg=none
 filetype plugin indent on
 "Ignore Case in Search
 set ignorecase
@@ -228,11 +237,12 @@ tnoremap <M-RIGHT> <C-W>:bn<CR>
 tnoremap <C-w> <C-\><C-N><C-w>
 inoremap <C-w> <C-\><C-N><C-w>
 " Terminal Stuff
-nnoremap ,t :sp<bar>term<cr><c-w>J:resize10<cr> I pwsh<cr>
-if has('win32')
-    "Causes an error with plugin 
-    "set shell=pwsh
-endif  
+
+:if has('win32')
+    nnoremap ,t :sp<bar>term<cr><c-w>J:resize10<cr> I pwsh<cr>
+:else
+    nnoremap ,t :sp<bar>term<cr><c-w>J:resize10<cr> I . ~/.bash_profile<cr>
+:endif  
 
 "==== End of Non Plugin specific changes ===
 

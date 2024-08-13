@@ -73,6 +73,7 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+. ~/.bashrc
 export PATH=$PATH:~/utils:/opt/app_images
 # Install Ruby Gems to ~/gems
 export GEM_HOME="$HOME/gems"
@@ -84,5 +85,6 @@ else
     eval `ssh-agent`
     ssh-add ~/.ssh/qa_rsa
 fi
-
+alias ls="exa --icons --grid --classify --colour=auto --sort=type --group-directories-first --header --modified --created  --binary --group"
 eval "$(starship init bash)"
+
