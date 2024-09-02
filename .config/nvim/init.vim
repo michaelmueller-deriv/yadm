@@ -31,7 +31,7 @@ try
         :endif
 
         let mapleader = ","
-	nnoremap <F4> :CHADopen<CR> 
+	nnoremap <leader>fd :CHADopen<CR> 
 	nnoremap <F7> :TagbarToggle<CR>
         autocmd BufWritePre *.tf lua vim.lsp.buf.formatting_sync()
         command CdCodebase cd ~\source\repos\code-base
