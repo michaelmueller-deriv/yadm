@@ -1,4 +1,4 @@
-
+. ~/utils/deriv_profile
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 set -o vi
